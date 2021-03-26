@@ -4,8 +4,8 @@ import Client from 'shopify-buy';
 const ShopContext = React.createContext();
 
 const client = Client.buildClient({
-    domain: process.env.REACT_APP_SHOPIFY_DOMAIN,
-    storefrontAccessToken: process.env.REACT_APP_SHOPIFY_API
+    domain: 'https://erotesstore.myshopify.com',
+    storefrontAccessToken: '0b20c0fbb620d5c02a6e8a72942b0160'
 });
 
 class ShopProvider extends Component {
@@ -52,13 +52,14 @@ class ShopProvider extends Component {
   this.setState({products: products})
 }
 
-    fetchProductWithHandle = async(handle) => { const product = await client.product.fetchByHandle(handle);
+    fetchProductWithHandle = async(handle) => { 
+        const product = await client.product.fetchByHandle(handle);
         this.setState({product: product})
 }
 
-    closeCart = () => {}
+    closeCart = () => { this.setState({isCartOpen: false})}
 
-    openCart = () => {}
+    openCart = () => {this.setState({isCartOpen: true})}
 
     closeMenu = () => {}
 
@@ -68,22 +69,17 @@ class ShopProvider extends Component {
         return (
             <ShopContext.Provider value={{...this.state,
             fetchAllProducts: this.fetchAllProducts,
-        fetchProductWithHandle: this.fetchProductWithHandle,
-        addItemToCheckout: this.addItemToCheckout,
-        removeLineItem: this.removeLineItem,
+            fetchProductWithHandle: this.fetchProductWithHandle,
+            addItemToCheckout: this.addItemToCheckout,
+            removeLineItem: this.removeLineItem,
             closeCart: this.closeCart,
             openCart: this.openCart,
             closeMenu: this.closeMenu,
             openMenu: this.openMenu,
-
-    }}
-        >
+        }}>
                 {this.props.children}
 
             </ShopContext.Provider>
-            
-            
-
         )
     }
 }
