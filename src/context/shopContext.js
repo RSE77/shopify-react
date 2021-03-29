@@ -4,7 +4,7 @@ import Client from 'shopify-buy';
 const ShopContext = React.createContext();
 
 const client = Client.buildClient({
-    domain: 'https://erotesstore.myshopify.com',
+    domain: 'erotesstore.myshopify.com',
     storefrontAccessToken: '0b20c0fbb620d5c02a6e8a72942b0160'
 });
 
