@@ -21,7 +21,7 @@ const ProductPage = () => {
     return (
         <Box>
             <Grid templateColumns="repeat(2, 1fr)">
-            <image src={product.images[0].src} />
+            <Image src={product.images[0].src} />
                 <Box>
                     <Heading>{product.title}</Heading>
                     <Text>{product.variants[0].price}</Text>

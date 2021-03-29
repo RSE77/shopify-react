@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {ShopContext} from '../context/shopContext';
-
+import {CloseIcon} from "@chakra-ui/icons"
 import {
   Drawer,
   DrawerBody,
@@ -9,7 +9,13 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Flex,
   Button,
+  Text,
+  Grid,
+  Image,
+  Link,
+  
 } from "@chakra-ui/react"
 
 const Cart = () => {
@@ -17,12 +23,11 @@ const Cart = () => {
     const { isCartOpen, closeCart, checkout, removeLineItem } = useContext(ShopContext)
 
     return(
-        <>
-        <Drawer
+      <>
+      <Drawer
         isOpen={isCartOpen}
         placement="right"
         onClose={closeCart}
-
       >
         <DrawerOverlay>
           <DrawerContent>
@@ -30,12 +35,34 @@ const Cart = () => {
             <DrawerHeader>Your Shopping Cart</DrawerHeader>
 
             <DrawerBody>
-              This is your cart
+              {
+                checkout.lineItems && checkout.lineItems.map(item => (
+                  <Grid templateColumns="repeat(4, 1fr)" gap={1} key={item.id}>
+                    <Flex alignItems="center" justifyContent="center">
+                      <CloseIcon cursor="pointer" onClick={() => removeLineItem(item.id)}/>
+                    </Flex>
+                    <Flex alignItems="center" justifyContent="center">
+                      <Image src={item.variant.image.src}/>
+                    </Flex>
+                    <Flex alignItems="center" justifyContent="center">
+                      <Text>{item.title} </Text>
+                    </Flex>
+                    <Flex alignItems="center" justifyContent="center">
+                      <Text>{item.variant.price}</Text>
+                    </Flex>
+                  </Grid>
+                  
+                ))
+              } 
             </DrawerBody>
 
             <DrawerFooter>
             
-              <Button> Checkout Here</Button>
+              <Button w="100%"> <Link
+              w="100%"
+              href={checkout.webUrl}>
+              Checkout
+              </Link> </Button>
             </DrawerFooter>
           </DrawerContent>
         </DrawerOverlay>
