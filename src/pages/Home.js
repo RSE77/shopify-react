@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {Box, Grid, Text, Image} from '@chakra-ui/react'
-
+import Hero from '../components/Hero'
 import { ShopContext } from '../context/shopContext'
+import ImageWithText  from '../components/ImageWithText'
 
 const Home = () => {
 
@@ -16,6 +17,7 @@ const Home = () => {
 
     return (
         <Box>
+        <Hero />
         <Grid templateColumns="repeat(3, 1fr)">
         
         {
@@ -36,6 +38,21 @@ const Home = () => {
         }
         
         </Grid>
+        <ImageWithText reverse 
+            image="https://cdn.shopify.com/s/files/1/0472/5705/9496/files/premium-bath-bombs.jpg?v=1610066758" 
+            heading="Heading"
+            text="Escape the day with relaxing bath bombs"
+            />
+         <ImageWithText 
+            image="https://cdn.shopify.com/s/files/1/0472/5705/9496/files/premium-bath-bombs.jpg?v=1610066758" 
+            heading="Heading"
+            text="Escape the day with relaxing bath bombs"
+            />
+         <ImageWithText reverse 
+            image="https://cdn.shopify.com/s/files/1/0472/5705/9496/files/premium-bath-bombs.jpg?v=1610066758" 
+            heading="Heading"
+            text="Escape the day with relaxing bath bombs"
+            />
         </Box>
     )
 }
