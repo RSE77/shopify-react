@@ -22,7 +22,7 @@ const ProductPage = () => {
         <Box p="2rem">
             <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]} margin="auto">
                 <Flex justifyContent="center" alignItems="center">
-                    <Image src={product.images[0].src} />
+                    <Image src={product.images[0].src}  />
                 </Flex>
                 <Flex flexDirection="column" alignItems="center" justifyContent="center" px="2rem">
                     <Heading pb="2rem">{product.title}</Heading>

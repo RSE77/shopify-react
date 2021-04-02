@@ -20,6 +20,7 @@ const Home = () => {
         <Box>
         <Box background="blue.100">
         <Hero />
+        
         <RichText
             
             heading="The relaxation you've been waiting for"
